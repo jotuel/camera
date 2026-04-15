@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
-use crate::Message;
 use crate::app::ContextPage;
+use crate::{Message, Subscription};
+use cosmic::iced::Event;
 use cosmic::iced::keyboard::Key;
 use cosmic::iced::keyboard::key::Named;
 
@@ -56,15 +57,8 @@ pub fn key_subscription() -> Subscription<Message> {
             {
                 Some(Message::ToggleContextPage(ContextPage::About))
             }
+
             // TODO: couldn't capture mode, need to think about it
-            // Named::Key(Named::Enter)
-            //     if !modifiers.control()
-            //         && !modifiers.logo()
-            //         && !modifiers.alt()
-            //         =>
-            // {
-            //     Some(Message::ToggleRecording())
-            // }
             Named::Key(Named::Enter)
                 if !modifiers.control() && !modifiers.logo() && !modifiers.alt() =>
             {
@@ -82,7 +76,7 @@ pub fn key_subscription() -> Subscription<Message> {
                     "f" => Some(Message::ToggleFormatPicker),
                     "q" => Some(Message::Noop),
                     "r" => Some(Message::ResetAllSettings),
-                    "t" => Some(Message::ToggleTheatherMode),
+                    "t" => Some(Message::ToggleTheatreMode),
                     "+" => Some(Message::ZoomIn),
                     "-" => Some(Message::ZoomOut),
                     " " => Some(Message::AbortPhotoTimer),

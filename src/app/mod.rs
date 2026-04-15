@@ -1499,7 +1499,7 @@ impl cosmic::Application for AppModel {
             Subscription::none()
         };
 
-        let keybind_sub = key_subscription(self.mode);
+        let keybind_sub = key_subscription();
 
         Subscription::batch([
             config_sub,
@@ -1513,6 +1513,7 @@ impl cosmic::Application for AppModel {
             brightness_eval_sub,
             insights_update_sub,
             portal_theme_sub,
+            keybind_sub,
         ])
     }
 
